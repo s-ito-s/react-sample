@@ -1,21 +1,25 @@
-import "./DeviceRegistrationForm.css"
 import {
   inputRegisterNameState,
   inputRegisterModelState,
 } from "../states/inputRegisterFormState"
-import { useRecoilState, useRecoilRefresher_UNSTABLE } from "recoil"
+import { useRecoilState, useSetRecoilState } from "recoil"
 import { registerDevice } from "../../ApiRequest"
 import { devicesState } from "../states/devicesState"
+import { fetchDevices } from "../../ApiRequest"
+import "./DeviceRegistrationForm.css"
 
 function DeviceRegistrationForm() {
-  const refreshDevicesState = useRecoilRefresher_UNSTABLE(devicesState)
+  const setDevicesState = useSetRecoilState(devicesState)
 
   const [name, setName] = useRecoilState(inputRegisterNameState)
   const [model, setModel] = useRecoilState(inputRegisterModelState)
 
   const onClickRegistrationButton = async () => {
     await registerDevice(name, model)
-    refreshDevicesState()
+
+    const { data } = await fetchDevices({})
+    setDevicesState(data)
+
     setName("")
     setModel("")
   }

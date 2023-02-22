@@ -4,13 +4,19 @@ export async function registerDevice(name: string, model: string) {
   return await axios.post('/device', { name, model })  
 }
 
-export async function fetchDevices(
-  searchParam: {
-    name?: string
-    model?: string
-  }
-) {
-  return await axios.get('/devices', { params:searchParam })  
+type Device = {
+  id: string
+  name: string
+  model: string
+}
+
+export async function fetchDevices(searchParam: {
+  name?: string
+  model?: string
+}) {
+  return await axios.get("/devices", {
+    params: searchParam,
+  })
 }
 
 export async function updateDevice(

@@ -1,23 +1,23 @@
-import { atom, selector } from "recoil";
-import { fetchDevices } from "../../ApiRequest";
+import { atom, selector } from "recoil"
+import { fetchDevices } from "../../ApiRequest"
 
 type Device = {
-  id: string;
-  name: string;
-  model: string;
-};
+  id: string
+  name: string
+  model: string
+}
 
-export const devicesState = atom<Device[] | null>({
+export const devicesState = atom<Device[]>({
   key: "devicesState",
   default: selector({
     key: "fetchDevices",
     get: async () => {
       try {
-        const response = await fetchDevices({});
-        return response.data;
+        const { data } = await fetchDevices({})
+        return data
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
     },
   }),
-});
+})

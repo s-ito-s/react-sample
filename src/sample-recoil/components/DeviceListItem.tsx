@@ -1,8 +1,9 @@
 import { useState } from "react"
-import { useRecoilState, useRecoilRefresher_UNSTABLE } from "recoil"
+import { useRecoilState, useSetRecoilState } from "recoil"
 import { devicesState } from "../states/devicesState"
 import { inputEditTextState } from "../states/inputEditTextState"
 import { updateDevice, deleteDevice } from "../../ApiRequest"
+import { fetchDevices } from "../../ApiRequest"
 import "./DeviceListItem.css"
 
 type DeviceListItemProps = {
@@ -22,14 +23,17 @@ const DeviceListItem = ({
   model,
 }: DeviceListItemProps): JSX.Element => {
   // データを再取得するためのhooks
-  const refreshDevicesState = useRecoilRefresher_UNSTABLE(devicesState)
+  const setDevicesState = useSetRecoilState(devicesState)
 
+  // コンポーネント内でしか使わないのはuseStateを使う方が良さそう
   const [isEditMode, setIsEditMode] = useState(false)
 
-  const onClickDeleteButton = () => {
+  const onClickDeleteButton = async () => {
     setIsEditMode(false)
     deleteDevice(id)
-    refreshDevicesState()
+
+    const { data } = await fetchDevices({})
+    setDevicesState(data)
   }
 
   const DeviceListItemView = () => {
@@ -58,9 +62,17 @@ const DeviceListItem = ({
       inputEditTextState(initialModel)
     )
 
-    const onClickUpdateButton = () => {
+    const onClickUpdateButton = async () => {
       updateDevice(id, { name: newName, model: newModel })
-      refreshDevicesState()
+
+      const { data } = await fetchDevices({})
+      setDevicesState(data)
+    }
+
+    const onClickClearButton = () => {
+      setNewName(initialName)
+      setNewModel(initialModel)
+      setIsEditMode(false)
     }
 
     return (
@@ -81,13 +93,7 @@ const DeviceListItem = ({
         </td>
         <td>
           <div className="device-list-item-button-area">
-            <button
-              onClick={() => {
-                setIsEditMode(false)
-              }}
-            >
-              cancel
-            </button>
+            <button onClick={onClickClearButton}>cancel</button>
             <button onClick={onClickUpdateButton}>update</button>
           </div>
         </td>
