@@ -1,0 +1,9 @@
+.device-list-item-input {
+  width: 120px;
+}
+
+.device-list-item-button-area {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

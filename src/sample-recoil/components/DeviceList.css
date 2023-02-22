@@ -1,0 +1,27 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th {
+  border-bottom: 1px solid black;
+  padding: 0 0 6px 0;  
+}
+
+table td {
+  padding: 8px 0 0 0;
+}
+
+.device-list-cell-name {
+  text-align: left;
+  width: 140px;
+}
+
+.device-list-cell-model {
+  text-align: left;
+  width: 140px;
+}
+
+.device-list-cell-button {
+  text-align: left;
+}
