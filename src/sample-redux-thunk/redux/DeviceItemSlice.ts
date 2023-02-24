@@ -7,8 +7,6 @@ const deviceItemSlice = createSlice({
     editItemId: '',
     name: '',
     model: '',
-    initialName: '',
-    initialModel: '',
     newName: '',
     newModel: '',
   },
@@ -44,8 +42,6 @@ export type DeviceItemState = {
   editItemId: '';
   name: string;
   model: string;
-  initialName: string;
-  initialModel: string;
   newName: string;
   newModel: string;
 };
