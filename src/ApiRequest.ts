@@ -11,6 +11,7 @@ export async function fetchDevices(
   }
 ) {
   return await axios.get('/devices', { params:searchParam })  
+}
 
 export async function updateDevice(
   id: string,
