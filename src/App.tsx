@@ -3,7 +3,7 @@ import Top from './Top'
 import SampleUseState from './sample-useState';
 import SampleUseContext from './sample-useContext';
 import SampleUseReducer from './sample-useReducer';
-import SampleReduxMiddleware from './sample-redux-middleware';
+import SampleZustand from './sample-zustand';
 import SampleReduxThunk from './sample-redux-thunk';
 import SampleRecoil from './sample-recoil';
 
@@ -17,7 +17,7 @@ function App() {
         <Route path="/useState" element={<SampleUseState />} />
         <Route path="/useContext" element={<SampleUseContext />} />
         <Route path="/useReducer" element={<SampleUseReducer />} />
-        <Route path="/redux-middleware" element={<SampleReduxMiddleware />} />
+        <Route path="/zustand" element={<SampleZustand />} />
         <Route path="/redux-thunk" element={<SampleReduxThunk />} />
         <Route path="/recoil" element={<SampleRecoil />} />
       </Routes>
