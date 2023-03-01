@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import useStore from './store';
+import useStore from './zustand/store';
 import { Link } from "react-router-dom"
 import SearchPanel from "./components/SearchPanel"
 import { SearchParam } from "./components/SearchPanel"

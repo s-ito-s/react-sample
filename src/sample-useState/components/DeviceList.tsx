@@ -9,8 +9,8 @@ export type Device = {
 
 type DeviceListProps = {
   deviceList: Device[], 
-  onDelete: (id:string) => void
-  onUpdate: (id:string, param:{name?:string, model?:string}) => void
+  onDelete: (id: string) => void
+  onUpdate: (id: string, param:{ name?: string, model?: string }) => void
 }
 
 function DeviceList ({deviceList, onDelete, onUpdate}: DeviceListProps) {

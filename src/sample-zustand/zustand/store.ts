@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-import { registerDevice, fetchDevices, updateDevice, deleteDevice } from "../ApiRequest"
-import { Device } from "./components/DeviceList"
+import { registerDevice, fetchDevices, updateDevice, deleteDevice } from "../../ApiRequest"
+import { Device } from "../components/DeviceList"
 
 type State = {
   deviceList: Device[],
