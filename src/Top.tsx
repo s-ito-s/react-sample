@@ -21,6 +21,9 @@ function Top () {
       </div>
       <div>
         <Link to={`/recoil`}>recoil</Link>      
+      </div>   
+      <div>
+        <Link to={`/component-library`}>component library</Link>      
       </div>      
     </div>
   )
