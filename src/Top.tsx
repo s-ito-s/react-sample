@@ -21,7 +21,10 @@ function Top () {
       </div>
       <div>
         <Link to={`/recoil`}>recoil</Link>      
-      </div>      
+      </div>   
+      <div>
+        <Link to={`/api-test`}>API Test</Link>      
+      </div>   
     </div>
   )
 }

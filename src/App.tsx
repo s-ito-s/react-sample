@@ -6,6 +6,7 @@ import SampleUseReducer from './sample-useReducer';
 import SampleReduxMiddleware from './sample-redux-middleware';
 import SampleReduxThunk from './sample-redux-thunk';
 import SampleRecoil from './sample-recoil';
+import SampleAPITest from './sample-api-test';
 
 import './App.css';
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/redux-middleware" element={<SampleReduxMiddleware />} />
         <Route path="/redux-thunk" element={<SampleReduxThunk />} />
         <Route path="/recoil" element={<SampleRecoil />} />
+        <Route path="/api-test" element={<SampleAPITest />} />
       </Routes>
     </BrowserRouter>
   );
