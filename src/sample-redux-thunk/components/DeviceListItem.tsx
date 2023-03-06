@@ -1,5 +1,9 @@
-import { useState } from 'react';
 import './DeviceListItem.css';
+import { useSelector, useDispatch } from 'react-redux';
+import deviceItemSlice from '../redux/DeviceItemSlice';
+import { TodoState } from '../redux/store';
+import './DeviceListItem.css';
+import { useEffect } from 'react';
 
 type DeviceListItemProps = {
   id: string;
@@ -22,20 +26,28 @@ function DeviceListItem({
   onDelete,
   onUpdate,
 }: DeviceListItemProps) {
-  const [isEditMode, setEditMode] = useState(false);
+  const isEditMode = useSelector(
+    (state: TodoState) => state.deviceItem.isEditMode
+  );
+  const editItemId = useSelector(
+    (state: TodoState) => state.deviceItem.editItemId
+  );
+  const { startEdit, endEdit, setNewName, setNewModel } =
+    deviceItemSlice.actions;
+  const dispatch = useDispatch();
 
   const onClickEditButton = () => {
-    setEditMode(true);
+    dispatch(startEdit({ isEdit: true, id: id }));
   };
 
   const onClickDeleteButton = () => {
     onDelete(id);
-    setEditMode(false);
+    dispatch(endEdit());
   };
 
   const onClickUpdateButton = (newName: string, newModel: string) => {
     onUpdate(id, { name: newName, model: newModel });
-    setEditMode(false);
+    dispatch(endEdit());
   };
 
   const DeviceListItemView = () => {
@@ -58,8 +70,15 @@ function DeviceListItem({
     initialModel,
     onClickUpdateButton,
   }: DevictListItemEditorProps) => {
-    const [newName, setNewName] = useState(initialName);
-    const [newModel, setNewModel] = useState(initialModel);
+    useEffect(() => {
+      dispatch(setNewName(initialName));
+      dispatch(setNewModel(initialModel));
+    }, [dispatch]);
+
+    const newName = useSelector((state: TodoState) => state.deviceItem.newName);
+    const newModel = useSelector(
+      (state: TodoState) => state.deviceItem.newModel
+    );
 
     return (
       <tr key={id}>
@@ -68,7 +87,7 @@ function DeviceListItem({
             className='device-list-item-input'
             value={newName}
             onChange={(e) => {
-              setNewName(e.target.value);
+              dispatch(setNewName(e.target.value));
             }}
           />
         </td>
@@ -77,7 +96,7 @@ function DeviceListItem({
             className='device-list-item-input'
             value={newModel}
             onChange={(e) => {
-              setNewModel(e.target.value);
+              dispatch(setNewModel(e.target.value));
             }}
           />
         </td>
@@ -85,7 +104,7 @@ function DeviceListItem({
           <div className='device-list-item-button-area'>
             <button
               onClick={() => {
-                setEditMode(false);
+                dispatch(endEdit());
               }}
             >
               cancel
@@ -103,7 +122,7 @@ function DeviceListItem({
     );
   };
 
-  if (isEditMode) {
+  if (isEditMode && id === editItemId) {
     return (
       <DeviceListItemEditor
         initialName={name}
