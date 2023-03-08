@@ -7,6 +7,7 @@ import SampleZustand from './sample-zustand';
 import SampleReduxThunk from './sample-redux-thunk';
 import { store } from './sample-redux-thunk/redux/store';
 import SampleRecoil from './sample-recoil';
+import SampleComponentLibrary from './sample-component-library';
 
 import './App.css';
 import { Provider } from 'react-redux';
@@ -29,6 +30,7 @@ function App() {
           }
         />
         <Route path='/recoil' element={<SampleRecoil />} />
+        <Route path="/component-library" element={<SampleComponentLibrary />} />
       </Routes>
     </BrowserRouter>
   );
