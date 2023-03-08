@@ -14,7 +14,7 @@ function Top () {
         <Link to={`/useReducer`}>useReducer</Link>      
       </div>
       <div>
-        <Link to={`/redux-middleware`}>redux middleware</Link>      
+        <Link to={`/zustand`}>zustand</Link>      
       </div>
       <div>
         <Link to={`/redux-thunk`}>redux thunk</Link>      
