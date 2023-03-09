@@ -1,14 +1,15 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Top from './Top';
-import SampleUseState from './sample-useState';
-import SampleUseContext from './sample-useContext';
-import SampleUseReducer from './sample-useReducer';
-import SampleZustand from './sample-zustand';
-import SampleReduxThunk from './sample-redux-thunk';
-import { store } from './sample-redux-thunk/redux/store';
-import SampleRecoil from './sample-recoil';
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Top from "./Top"
+import SampleUseState from "./sample-useState"
+import SampleUseContext from "./sample-useContext"
+import SampleUseReducer from "./sample-useReducer"
+import SampleZustand from "./sample-zustand"
+import SampleReduxThunk from "./sample-redux-thunk"
+import { store } from "./sample-redux-thunk/redux/store"
+import SampleRecoil from "./sample-recoil"
 import SampleCounter from "./sample-counter"
 import SampleCounterMemo from "./sample-counter-memo"
+import SampleComponentLibrary from "./sample-component-library"
 
 import "./App.css"
 import { Provider } from "react-redux"
@@ -31,6 +32,7 @@ function App() {
           }
         />
         <Route path="/recoil" element={<SampleRecoil />} />
+        <Route path="/component-library" element={<SampleComponentLibrary />} />
         <Route path="/counter" element={<SampleCounter />} />
         <Route path="/counterMemo" element={<SampleCounterMemo />} />
       </Routes>
@@ -38,4 +40,4 @@ function App() {
   )
 }
 
-export default App;
+export default App

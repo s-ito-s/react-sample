@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
-function Top () {
+function Top() {
   return (
     <div>
       <h1>React Page Samples</h1>
@@ -21,6 +21,9 @@ function Top () {
       </div>
       <div>
         <Link to={`/recoil`}>recoil</Link>
+      </div>
+      <div>
+        <Link to={`/component-library`}>component library</Link>
       </div>
       <div>
         <br />
