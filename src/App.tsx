@@ -9,6 +9,7 @@ import { store } from "./sample-redux-thunk/redux/store"
 import SampleRecoil from "./sample-recoil"
 import SampleCounter from "./sample-counter"
 import SampleCounterMemo from "./sample-counter-memo"
+import SampleCounterClass from "./sample-counter-class"
 import SampleComponentLibrary from "./sample-component-library"
 
 import "./App.css"
@@ -35,6 +36,7 @@ function App() {
         <Route path="/component-library" element={<SampleComponentLibrary />} />
         <Route path="/counter" element={<SampleCounter />} />
         <Route path="/counterMemo" element={<SampleCounterMemo />} />
+        <Route path="/counterClass" element={<SampleCounterClass />} />
       </Routes>
     </BrowserRouter>
   )

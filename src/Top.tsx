@@ -34,6 +34,9 @@ function Top() {
       <div>
         <Link to={`/counterMemo`}>counter memo</Link>
       </div>
+      <div>
+        <Link to={`/counterClass`}>counter class</Link>
+      </div>
     </div>
   )
 }
