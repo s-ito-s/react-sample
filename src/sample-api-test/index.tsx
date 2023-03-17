@@ -13,12 +13,20 @@ function SampleAPITest() {
   const apiRequest = new DeviceServiceRequests(axiosInstance);
   let controller = new AbortController();
 
-  const onClickGetButton = () => {
+  const onClickGetButton = async () => {
     controller = new AbortController();
-    apiRequest.fetchDevicesDelay({}, controller.signal).then((response) => {
-      console.log(response);
+    // apiRequest.fetchDevicesDelay({}, controller.signal).then((response) => {
+    //   console.log(response);
+    //   setDeviceList(response);
+    // }).catch((error) => {
+    //   console.log(error)
+    // });
+    try {
+      const response = await apiRequest.fetchDevicesDelay({}, controller.signal)
       setDeviceList(response);
-    });
+    } catch(error) {
+      console.log(error)
+    }
   };
 
   const onClickCancelButton = async () => {
