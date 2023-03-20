@@ -23,6 +23,9 @@ function Top() {
         <Link to={`/recoil`}>recoil</Link>
       </div>
       <div>
+        <Link to={`/redux-di`}>redux di</Link>      
+      </div>        
+      <div>
         <Link to={`/component-library`}>component library</Link>
       </div>
       <div>

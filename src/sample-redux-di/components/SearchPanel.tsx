@@ -1,10 +1,9 @@
 // React
-import { useState } from "react"
 import { useSelector, useDispatch } from 'react-redux'
 
 // Store
-import { fetchDevices } from '../store/actions'
-import { selectDevicePageState } from '../store/selectors'
+import { updateSearchParam, clearSearchParam, updateDeviceList } from '../store/actions'
+import { selectDevicePageState, selectDeviceSearchParam } from '../store/selectors'
 import { updateState } from '../store/devicePageSlice'
 
 // Service
@@ -15,27 +14,26 @@ import './SearchPanel.css'
 
 function SerachPanel () {
   const state = useSelector(selectDevicePageState)
+  const searchParam = useSelector(selectDeviceSearchParam)
   const dispatch = useDispatch()
 
-  const [name, setName] = useState('')
-  const [model, setModel] = useState('') 
+  const onChangeSearchNameParam = (name:string) => {
+    const newState = updateSearchParam(state, {name})
+    dispatch(updateState(newState))
+  }
+
+  const onChangeSearchModelParam = (model:string) => {
+    const newState = updateSearchParam(state, {model})
+    dispatch(updateState(newState))
+  }
 
   const onClickSearchButton = async () => {
-    const param: {name?: string, model?:string} = {}
-    if (name !== '') {
-      param['name'] = name
-    }
-    if (model !== '') {
-      param['model'] = model
-    }
-    const newState = await fetchDevices(state, deviceService, param)
+    const newState = await updateDeviceList(state, deviceService)
     dispatch(updateState(newState))
   }
 
   const onClickClearButton = async () => {
-    setName('')
-    setModel('')
-    const newState = await fetchDevices(state, deviceService, {})
+    const newState = await clearSearchParam(state, deviceService)
     dispatch(updateState(newState))
   }  
 
@@ -52,16 +50,16 @@ function SerachPanel () {
         <div className="search-panel-row-label">Name</div>
         <input 
           className="search-panel-row-input" 
-          value={name} 
-          onChange={(e) => {setName(e.target.value)}}
+          value={searchParam.name} 
+          onChange={(e) => {onChangeSearchNameParam(e.target.value)}}
         />
       </div>
       <div className="search-panel-row">
         <div className="search-panel-row-label">Model</div>
         <input 
           className="search-panel-row-input" 
-          value={model}  
-          onChange={(e) => {setModel(e.target.value)}}
+          value={searchParam.model}  
+          onChange={(e) => {onChangeSearchModelParam(e.target.value)}}
         />
       </div>
     </div>

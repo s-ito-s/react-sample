@@ -5,10 +5,73 @@ export const initialize = async (
   state: DevicePageState,
   service: IDeviceService
 ) => {
-  return await fetchDevices(state, service, {})
+  return await updateDeviceList(state, service)
 }
 
 export const finalize = () => {
+}
+
+export const updateSearchParam = (
+  state: DevicePageState,
+  param: {name?:string, model?:string}
+) : DevicePageState => {
+  const newState = Object.assign({}, state)
+  const newSearchParam = Object.assign({}, state.searchParam)
+  if(param.name !== undefined) {
+    newSearchParam.name = param.name
+  }
+  if(param.model !== undefined) {
+    newSearchParam.model = param.model
+  }
+  newState.searchParam = newSearchParam
+  return newState
+}
+
+export const updateDeviceList = async (
+  state: DevicePageState,
+  service: IDeviceService,
+) : Promise<DevicePageState> => {
+  return await fetchDevices(state, service, state.searchParam)
+}
+
+export const clearSearchParam = async (
+  state: DevicePageState,
+  service: IDeviceService,  
+) : Promise<DevicePageState> => {
+  const newSearchParam = {
+    name: '',
+    model: '',
+  }
+  const newState = await fetchDevices(state, service, newSearchParam)
+  newState.searchParam = newSearchParam
+  return newState
+}
+
+export const registerDevice = async (
+  state: DevicePageState, 
+  service: IDeviceService,
+  param: {name:string, model:string}
+) : Promise<DevicePageState> => {
+  await service.registerDevice(param.name, param.model)
+  return await updateDeviceList(state, service)
+}
+
+export const updateDevice = async (
+  state: DevicePageState,
+  service: IDeviceService,
+  param: {id: string,name?:string, model?:string}
+) : Promise<DevicePageState> => {
+  await service.updateDevice(param.id, param)
+  return await updateDeviceList(state, service)
+}
+
+export const deleteDevice = async (
+  state: DevicePageState, 
+  service: IDeviceService,
+  param: {id: string}
+) : Promise<DevicePageState> => {
+  await service.deleteDevice(param.id)
+  return await updateDeviceList(state, service)
 }
 
 export const fetchDevices = async (
@@ -23,51 +86,7 @@ export const fetchDevices = async (
       id: device.id,
       name: device.name,
       model: device.model,
-      isEdit: false,
     }
   })
   return newState
-}
-
-export const registerDevice = async (
-  state: DevicePageState, 
-  service: IDeviceService,
-  name:string,
-  model:string
-) : Promise<DevicePageState> => {
-  await service.registerDevice(name, model)
-  return await fetchDevices(state, service, {})
-}
-
-export const startEditingDevice = (
-  state: DevicePageState,
-  id: string
-) => {
-  const newState = Object.assign({}, state)
-}
-
-export const cancelEditingDevice = (
-  state: DevicePageState,
-  id: string
-) => {
-  const newState = Object.assign({}, state)
-}
-
-export const updateDevice = async (
-  state: DevicePageState,
-  service: IDeviceService,
-  id: string,
-  param: {name?:string, model?:string}
-) : Promise<DevicePageState> => {
-  await service.updateDevice(id, param)
-  return await fetchDevices(state, service, {})
-}
-
-export const deleteDevice = async (
-  state: DevicePageState, 
-  service: IDeviceService,
-  id: string,
-) : Promise<DevicePageState> => {
-  await service.deleteDevice(id)
-  return await fetchDevices(state, service, {})
 }

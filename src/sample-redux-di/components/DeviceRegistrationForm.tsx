@@ -1,14 +1,30 @@
+// React
 import { useState } from "react"
+import { useSelector, useDispatch } from 'react-redux'
+
+// Store
+import { registerDevice } from '../store/actions'
+import { selectDevicePageState } from '../store/selectors'
+import { updateState } from '../store/devicePageSlice'
+
+// Service
+import deviceService from "../Service/deviceService"
+
+// Component
 import './DeviceRegistrationForm.css'
 
 function DeviceRegistrationForm () {
+  const state = useSelector(selectDevicePageState)
+  const dispatch = useDispatch()
+
   const [name, setName] = useState('')
   const [model, setModel] = useState('') 
 
-  const onClickRegistrationButton = () => {
+  const onClickRegistrationButton = async () => {
+    const newState = await registerDevice(state, deviceService, {name, model})
+    dispatch(updateState(newState))
     setName('')
     setModel('')
-    // onRegister(name, model)
   }
 
   return (

@@ -4,6 +4,10 @@ import { DevicePageState } from './state'
 
 const initialState: DevicePageState = {
   deviceList: [],
+  searchParam: {
+    name: '',
+    model: '',
+  }
 }
 
 export const devicePageSlice = createSlice({

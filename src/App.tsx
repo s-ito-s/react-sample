@@ -6,7 +6,9 @@ import SampleUseReducer from "./sample-useReducer"
 import SampleZustand from "./sample-zustand"
 import SampleReduxThunk from "./sample-redux-thunk"
 import { store } from "./sample-redux-thunk/redux/store"
+import { storeReduxDI } from "./sample-redux-di/store"
 import SampleRecoil from "./sample-recoil"
+import SampleReduxDI from "./sample-redux-di"
 import SampleCounter from "./sample-counter"
 import SampleCounterMemo from "./sample-counter-memo"
 import SampleComponentLibrary from "./sample-component-library"
@@ -32,6 +34,14 @@ function App() {
           }
         />
         <Route path="/recoil" element={<SampleRecoil />} />
+        <Route 
+          path="/redux-di" 
+          element={
+            <Provider store={storeReduxDI}>
+              <SampleReduxDI />
+            </Provider>
+          }
+        />
         <Route path="/component-library" element={<SampleComponentLibrary />} />
         <Route path="/counter" element={<SampleCounter />} />
         <Route path="/counterMemo" element={<SampleCounterMemo />} />

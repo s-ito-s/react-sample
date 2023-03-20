@@ -26,6 +26,8 @@ function DeviceList () {
             <DeviceListItem 
               key={device.id}
               id={device.id}
+              name={device.name}
+              model={device.model}
             />
           )}
         )}

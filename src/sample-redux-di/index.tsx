@@ -30,7 +30,7 @@ function SampleReduxDI () {
 
   return (
     <div className="sample-use-state-main">
-      <h1>Sample UseState</h1>
+      <h1>Sample Redux DI</h1>
       <div className="search-panel">
         <SearchPanel/>
       </div>

@@ -1,35 +1,27 @@
 // react
 import { useState } from "react"
-import { useSelector, useDispatch } from 'react-redux'
-
-// Store
-import { updateDevice, cancelEditingDevice } from '../store/actions'
-import { selectDeviceList } from '../store/selectors'
-import { updateState } from '../store/devicePageSlice'
-
-// Service
-import deviceService from "../Service/deviceService"
 
 // Component
 import './DeviceListItem.css'
 
 type DevictListItemEditorProps = {
   id: string,
+  name: string,
+  model: string,
+  onCancel: () => void
+  onUpdate: (id:string, name:string, model:string) => void
 }
 
-const DeviceListItemEditor = ({id}: DevictListItemEditorProps) => {
-  const deviceList = useSelector(selectDeviceList)
-  const tragetDevice = deviceList.filter(device => {
-    return device.id === id
-  })[0]
-
-  const [newName, setNewName] = useState(tragetDevice.name)
-  const [newModel, setNewModel] = useState(tragetDevice.model) 
+const DeviceListItemEditor = ({id, name, model, onCancel, onUpdate}: DevictListItemEditorProps) => {
+  const [newName, setNewName] = useState(name)
+  const [newModel, setNewModel] = useState(model) 
 
   const onClickCancelButton = () => {
+    onCancel()
   }
 
   const onClickUpdateButton = () => {
+    onUpdate(id, newName, newModel)
   }
 
   return (
