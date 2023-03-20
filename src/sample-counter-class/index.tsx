@@ -20,6 +20,19 @@ class Counter extends Component<{}, CounterState> {
       count01: 0,
       count02: 0,
     }
+
+    this.incrementSecondCounter = this.incrementSecondCounter.bind(this)
+  }
+
+  // アロー関数で書くことでbindせずに利用することができる。
+
+  //+ 10 ボタンのstateセット用関数
+  // incrementSecondCounter = () => {
+  //   this.setState({ secondCountState: this.state.secondCountState + 10 })
+  // }
+
+  incrementSecondCounter() {
+    this.setState({ secondCountState: this.state.secondCountState + 10 })
   }
 
   //+ 1 ボタンのstateセット用関数
@@ -27,10 +40,7 @@ class Counter extends Component<{}, CounterState> {
     this.setState({ firstCountState: this.state.firstCountState + 1 })
   }
 
-  //+ 10 ボタンのstateセット用関数
-  incrementSecondCounter = () => {
-    this.setState({ secondCountState: this.state.secondCountState + 10 })
-  }
+
 
   result01 = () => {
     this.setState({ count01: this.state.count01 + 1 })
