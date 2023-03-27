@@ -38,16 +38,8 @@ export class CustomAxiosClient implements ApiClientBase {
     // いい感じにリクエストを管理する
   }
 
-  async get<T = any>({
-    url,
-    params,
-    headers,
-    getToken,
-  }: GetConfigTypes): Promise<T> {
+  async get<T = any>({ url, params, headers }: GetConfigTypes): Promise<T> {
     try {
-      if (getToken) {
-        getToken();
-      }
       const response = await this.axiosInstance.request({
         method: 'GET',
         url,
@@ -64,13 +56,9 @@ export class CustomAxiosClient implements ApiClientBase {
     url,
     data,
     headers,
-    getToken,
     contentType = this.contentType,
   }: PostConfigTypes): Promise<T> {
     try {
-      if (getToken) {
-        getToken();
-      }
       const response = await this.axiosInstance.request({
         method: 'POST',
         url,
@@ -87,13 +75,9 @@ export class CustomAxiosClient implements ApiClientBase {
     url,
     data,
     headers,
-    getToken,
     contentType = this.contentType,
   }: PatchConfigTypes): Promise<T> {
     try {
-      if (getToken) {
-        getToken();
-      }
       const response = await this.axiosInstance.request({
         method: 'PATCH',
         url,
@@ -110,13 +94,9 @@ export class CustomAxiosClient implements ApiClientBase {
     url,
     data,
     headers,
-    getToken,
     contentType = this.contentType,
   }: PutConfigTypes): Promise<T> {
     try {
-      if (getToken) {
-        getToken();
-      }
       const response = await this.axiosInstance.request({
         method: 'PUT',
         url,
@@ -133,13 +113,9 @@ export class CustomAxiosClient implements ApiClientBase {
     url,
     data,
     headers,
-    getToken,
     contentType = this.contentType,
   }: DeleteConfigTypes): Promise<T> {
     try {
-      if (getToken) {
-        getToken();
-      }
       const response = await this.axiosInstance.request({
         method: 'DELETE',
         url,
@@ -152,21 +128,3 @@ export class CustomAxiosClient implements ApiClientBase {
     }
   }
 }
-
-const XSRF_HEADER_NAME = 'X-XSRFTOKEN' as const;
-const XSRF_COOKIE_NAME = '_xsrf' as const;
-
-export const axiosClient = new CustomAxiosClient({
-  contentType: 'application/json',
-  axiosConfig: {
-    xsrfHeaderName: XSRF_HEADER_NAME,
-    xsrfCookieName: XSRF_COOKIE_NAME,
-    withCredentials: true,
-    baseURL: process.env.entranceApiHost,
-    paramsSerializer: {
-      serialize: (params: any) => {
-        return qs.stringify(params, { arrayFormat: 'repeat' });
-      },
-    },
-  },
-});
