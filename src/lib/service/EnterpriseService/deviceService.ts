@@ -1,6 +1,5 @@
-import { Device } from '../../sample-useState/components/DeviceList';
-import { ApiClientBase } from '../types/apiClient';
-import { axiosClient } from './customAxiosClient';
+import { Device } from '../../../sample-useState/components/DeviceList';
+import { EnterpriseRequest } from './EnterpriseRequest';
 
 interface DeviceService {
   fetchDevices(searchParam: {
@@ -31,13 +30,10 @@ interface DeviceService {
   deleteDeviceDelay(id: string): Promise<any>;
 }
 
-class DeviceServiceRequests implements DeviceService {
-  private apiClient: ApiClientBase;
-
-  constructor(client: ApiClientBase) {
-    this.apiClient = client;
-  }
-
+export class DeviceServiceRequests
+  extends EnterpriseRequest
+  implements DeviceService
+{
   async fetchDevices(searchParam: {
     name?: string;
     model?: string;
@@ -114,5 +110,3 @@ class DeviceServiceRequests implements DeviceService {
     });
   }
 }
-
-export const deviceService = new DeviceServiceRequests(axiosClient);

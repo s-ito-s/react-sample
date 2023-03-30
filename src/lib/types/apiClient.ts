@@ -4,14 +4,14 @@ export type GetConfigTypes = {
   url: string;
   params?: Record<string, unknown> | URLSearchParams;
   headers?: any;
-  getToken?: () => {};
+  cancelable?: boolean;
 };
 
 export type PostConfigTypes = {
   url: string;
   data?: Record<string, unknown> | URLSearchParams;
   headers?: any;
-  getToken?: () => {};
+  cancelable?: boolean;
   contentType?: ContentType;
 };
 
@@ -19,7 +19,7 @@ export type PutConfigTypes = {
   url: string;
   data: Record<string, unknown>;
   headers?: any;
-  getToken?: () => {};
+  cancelable?: boolean;
   contentType?: ContentType;
 };
 
@@ -27,7 +27,7 @@ export type DeleteConfigTypes = {
   url: string;
   data?: Record<string, unknown>;
   headers?: any;
-  getToken?: () => {};
+  cancelable?: boolean;
   contentType?: ContentType;
 };
 
@@ -35,7 +35,7 @@ export type PatchConfigTypes = {
   url: string;
   data?: Record<string, unknown>;
   headers?: any;
-  getToken?: () => {};
+  cancelable?: boolean;
   contentType?: ContentType;
 };
 

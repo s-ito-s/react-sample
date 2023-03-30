@@ -1,6 +1,4 @@
 import axios, { AxiosInstance, CreateAxiosDefaults } from 'axios';
-import cookie from 'cookie';
-import qs from 'qs';
 import {
   GetConfigTypes,
   PostConfigTypes,
@@ -38,8 +36,14 @@ export class CustomAxiosClient implements ApiClientBase {
     // いい感じにリクエストを管理する
   }
 
-  async get<T = any>({ url, params, headers }: GetConfigTypes): Promise<T> {
+  async get<T = any>({
+    url,
+    params,
+    headers,
+    cancelable = false,
+  }: GetConfigTypes): Promise<T> {
     try {
+      // cancelableがtrueだったらキャンセルトークンを作る
       const response = await this.axiosInstance.request({
         method: 'GET',
         url,
@@ -56,9 +60,11 @@ export class CustomAxiosClient implements ApiClientBase {
     url,
     data,
     headers,
+    cancelable = false,
     contentType = this.contentType,
   }: PostConfigTypes): Promise<T> {
     try {
+      // cancelableがtrueだったらキャンセルトークンを作る
       const response = await this.axiosInstance.request({
         method: 'POST',
         url,
@@ -75,9 +81,11 @@ export class CustomAxiosClient implements ApiClientBase {
     url,
     data,
     headers,
+    cancelable = false,
     contentType = this.contentType,
   }: PatchConfigTypes): Promise<T> {
     try {
+      // cancelableがtrueだったらキャンセルトークンを作る
       const response = await this.axiosInstance.request({
         method: 'PATCH',
         url,
@@ -94,9 +102,11 @@ export class CustomAxiosClient implements ApiClientBase {
     url,
     data,
     headers,
+    cancelable = false,
     contentType = this.contentType,
   }: PutConfigTypes): Promise<T> {
     try {
+      // cancelableがtrueだったらキャンセルトークンを作る
       const response = await this.axiosInstance.request({
         method: 'PUT',
         url,
@@ -113,9 +123,11 @@ export class CustomAxiosClient implements ApiClientBase {
     url,
     data,
     headers,
+    cancelable = false,
     contentType = this.contentType,
   }: DeleteConfigTypes): Promise<T> {
     try {
+      // cancelableがtrueだったらキャンセルトークンを作る
       const response = await this.axiosInstance.request({
         method: 'DELETE',
         url,
