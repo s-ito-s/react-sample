@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import './DeviceListItem.css';
+import {
+  Button,
+  CSSModulesButton,
+  EmotionButton,
+  VanillaButton,
+} from "component-library-module";
 
 type DeviceListItemProps = {
   id: string;
@@ -44,9 +50,18 @@ function DeviceListItem({
         <td>{name}</td>
         <td>{model}</td>
         <td>
-          <div className='device-list-item-button-area'>
-            <button onClick={onClickEditButton}>Edit</button>
-            <button onClick={onClickDeleteButton}>Delete</button>
+          <div className="device-list-item-button-area">
+            <VanillaButton onClick={onClickEditButton} variant={"secondary"}>
+              Edit
+            </VanillaButton>
+            {/* <button onClick={onClickEditButton}>Edit</button> */}
+            <VanillaButton
+              onClick={onClickDeleteButton}
+              variant={"destructive"}
+            >
+              Delete
+            </VanillaButton>
+            {/* <button onClick={onClickDeleteButton}>Delete</button> */}
           </div>
         </td>
       </tr>

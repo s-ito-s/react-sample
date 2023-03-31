@@ -3205,9 +3205,9 @@ commondir@^1.0.1:
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==
 
-"component-library-module@git+ssh://git@github.com:KazukiMatsuda1/component-library-module.git":
+"component-library-module@git+ssh://git@github.com:KazukiMatsuda1/component-library-module.git#styling-research":
   version "1.0.0"
-  resolved "git+ssh://git@github.com:KazukiMatsuda1/component-library-module.git#c111343c0c1f7233676ebc2c21af28d20b27fc2d"
+  resolved "git+ssh://git@github.com:KazukiMatsuda1/component-library-module.git#b47f75a55a9938a790c2102593e5601c2218af7a"
 
 compressible@~2.0.16:
   version "2.0.18"
