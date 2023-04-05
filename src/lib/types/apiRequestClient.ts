@@ -47,10 +47,6 @@ export type CancelConfig = {
   cancelType: 'recently' | 'targetAll' | 'all';
 };
 
-// export type CancelConfig = {
-//   requestIds: string[];
-// }
-
 export interface ApiClientBase {
   get<T = any>(params: GetConfigTypes): Promise<T>;
   post<T = any>(params: PostConfigTypes): Promise<T>;
