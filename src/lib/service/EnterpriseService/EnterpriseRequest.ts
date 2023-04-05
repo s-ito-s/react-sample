@@ -6,7 +6,7 @@ import {
   PatchConfigTypes,
   PostConfigTypes,
   PutConfigTypes,
-} from '../../types/apiClient';
+} from '../../types/apiRequestClient';
 
 export class EnterpriseRequest {
   protected apiClient: ApiClientBase;

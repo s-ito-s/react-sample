@@ -7,7 +7,7 @@ import {
   DeleteConfigTypes,
   ApiClientBase,
   CancelConfig,
-} from '../types/apiClient';
+} from '../types/apiRequestClient';
 import {
   ContentType,
   convertParams,
