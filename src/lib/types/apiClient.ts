@@ -40,11 +40,11 @@ export type PatchConfigTypes = {
 };
 
 // URLとメソッド（GET, POST...）を渡してキャンセルするイメージ、cancelAllがfalseなら最新リクエスト、trueなら全て
-// 別案としてコンポーネント側からキャンセルするリクエストのID配列を渡す案もあり
 export type CancelConfig = {
   url: string;
   method: string;
-  cancelAll: boolean;
+  // キャンセルする対象　最新/該当全て/全て　デフォルトは最新
+  cancelType: 'recently' | 'targetAll' | 'all';
 };
 
 // export type CancelConfig = {
