@@ -25,9 +25,6 @@ function Top() {
       <div>
         <Link to={`/component-library`}>component library</Link>
       </div>
-      <div>
-        <Link to={`/api-test`}>API Test</Link>
-      </div>
 
       <div>
         <br />
