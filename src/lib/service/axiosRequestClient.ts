@@ -15,7 +15,7 @@ import {
   encode,
 } from '../utills/apiUtill';
 
-export class CustomAxiosClient implements ApiClientBase {
+export class AxiosRequestClient implements ApiClientBase {
   private contentType: ContentType;
   private axiosInstance: AxiosInstance;
 
