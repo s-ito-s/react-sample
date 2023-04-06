@@ -1,32 +1,48 @@
 import { Link } from "react-router-dom";
 
-function Top () {
+function Top() {
   return (
     <div>
       <h1>React Page Samples</h1>
       <div>
-        <Link to={`/useState`}>useState</Link>      
+        <Link to={`/useState`}>useState</Link>
       </div>
       <div>
         <Link to={`/useContext`}>useContext</Link>
       </div>
       <div>
-        <Link to={`/useReducer`}>useReducer</Link>      
+        <Link to={`/useReducer`}>useReducer</Link>
       </div>
       <div>
-        <Link to={`/redux-middleware`}>redux middleware</Link>      
+        <Link to={`/zustand`}>zustand</Link>
       </div>
       <div>
-        <Link to={`/redux-thunk`}>redux thunk</Link>      
+        <Link to={`/redux-thunk`}>redux thunk</Link>
       </div>
       <div>
-        <Link to={`/recoil`}>recoil</Link>      
-      </div>   
+        <Link to={`/recoil`}>recoil</Link>
+      </div>
       <div>
-        <Link to={`/api-test`}>API Test</Link>      
-      </div>   
+        <Link to={`/component-library`}>component library</Link>
+      </div>
+      <div>
+        <Link to={`/api-test`}>API Test</Link>
+      </div>
+
+      <div>
+        <br />
+        <h2>メモ化用サンプル</h2>
+        <br />
+        <Link to={`/counter`}>counter</Link>
+      </div>
+      <div>
+        <Link to={`/counterMemo`}>counter memo</Link>
+      </div>
+      <div>
+        <Link to={`/counterClass`}>counter class</Link>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Top
+export default Top;
