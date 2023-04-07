@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 function Top() {
   return (
@@ -25,6 +25,7 @@ function Top() {
       <div>
         <Link to={`/component-library`}>component library</Link>
       </div>
+
       <div>
         <br />
         <h2>メモ化用サンプル</h2>
@@ -38,7 +39,7 @@ function Top() {
         <Link to={`/counterClass`}>counter class</Link>
       </div>
     </div>
-  )
+  );
 }
 
-export default Top
+export default Top;
