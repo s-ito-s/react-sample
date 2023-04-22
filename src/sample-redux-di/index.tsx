@@ -9,7 +9,7 @@ import { selectDevicePageState } from './store/selectors'
 import { updateState } from './store/devicePageSlice'
 
 // Service
-import deviceService from "./Service/deviceService"
+import deviceService from "./service/deviceService"
 
 // Component
 import SearchPanel from "./components/SearchPanel"

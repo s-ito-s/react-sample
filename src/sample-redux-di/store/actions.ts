@@ -1,5 +1,5 @@
 import { DevicePageState } from './state'
-import { IDeviceService } from '../Service/deviceService'
+import { IDeviceService } from '../service/deviceService'
 
 export const initialize = async (
   state: DevicePageState,

@@ -7,7 +7,7 @@ import { selectDevicePageState, selectDeviceSearchParam } from '../store/selecto
 import { updateState } from '../store/devicePageSlice'
 
 // Service
-import deviceService from "../Service/deviceService"
+import deviceService from "../service/deviceService"
 
 // Component
 import './SearchPanel.css'
