@@ -1,0 +1,35 @@
+.popup {
+  min-width: 300px;
+  max-width: 600px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+
+  padding: 10px;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #eee;
+
+  animation: SlideIn 0.3s;
+}
+
+@keyframes SlideIn {
+  0% {
+    transform: translate(-50%, -40px);
+  }
+  100% {
+    transform: translate(-50%, 0%);
+  }
+}
+
+.popup-close-button:hover{
+  cursor: pointer;
+}

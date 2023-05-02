@@ -1,0 +1,16 @@
+.user-list-cell-check {
+  width: 50px;
+}
+
+.user-list-cell-name {
+  width: 200px;
+}
+
+.user-list-cell-department{
+  width: 240px;
+}
+
+.user-list-loading-cell {
+  text-align: center;
+  height: 300px;
+}

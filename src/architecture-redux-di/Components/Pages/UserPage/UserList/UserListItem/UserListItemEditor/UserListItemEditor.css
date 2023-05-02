@@ -1,0 +1,5 @@
+.user-list-item-data-cell {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 0 0;
+}

@@ -1,0 +1,33 @@
+.user-deletion-modal-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 100%;
+  padding: 10px;
+
+  font-size: large;
+
+  border: 1px solid #777;
+  border-style: none none solid none;
+}
+
+.user-deletion-modal-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 10px;
+}
+
+.user-deletion-modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  padding: 10px;
+
+  border: 1px solid #777;
+  border-style: solid none none none;
+}

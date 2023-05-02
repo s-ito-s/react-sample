@@ -29,8 +29,7 @@ function Top() {
         <Link to={`/component-library`}>component library</Link>
       </div>
 
-      <br />
-      <br />
+      <br /><br />
 
       <h1>メモ化用サンプル</h1>
       <div>
@@ -42,6 +41,14 @@ function Top() {
       <div>
         <Link to={`/counterClass`}>counter class</Link>
       </div>
+
+      <br /><br />
+
+      <h1>Architecture</h1>      
+      <div>
+        <Link to={`/architecture-redux-di/device`}>architecture-redux-di</Link>
+      </div>
+
     </div>
   );
 }
