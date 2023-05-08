@@ -10,7 +10,9 @@ import SampleRecoil from "./sample-recoil"
 import SampleCounter from "./sample-counter"
 import SampleCounterMemo from "./sample-counter-memo"
 import SampleCounterClass from "./sample-counter-class"
-import SampleComponentLibrary from "./sample-component-library"
+
+// style
+import StyleCSSModules from "./style-css-modules";
 
 import "./App.css"
 import { Provider } from "react-redux"
@@ -33,13 +35,13 @@ function App() {
           }
         />
         <Route path="/recoil" element={<SampleRecoil />} />
-        <Route path="/component-library" element={<SampleComponentLibrary />} />
         <Route path="/counter" element={<SampleCounter />} />
         <Route path="/counterMemo" element={<SampleCounterMemo />} />
+        <Route path="/styleCssModules" element={<StyleCSSModules />} />
         <Route path="/counterClass" element={<SampleCounterClass />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App

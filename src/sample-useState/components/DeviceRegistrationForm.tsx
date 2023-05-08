@@ -1,12 +1,5 @@
 import { useState } from "react"
-import './DeviceRegistrationForm.css'
-import {
-  VanillaButton,
-  VanillaButtonProps,
-  CSSModulesButton,
-} from "component-library-module";
-
-type BtnProps = VanillaButtonProps["variant"];
+import "./DeviceRegistrationForm.css";
 
 function DeviceRegistrationForm({
   onRegister,
@@ -16,20 +9,10 @@ function DeviceRegistrationForm({
   const [name, setName] = useState("");
   const [model, setModel] = useState("");
 
-  const [variant, setVariant] = useState<BtnProps>("primary");
-
   const onClickRegistrationButton = () => {
     setName("");
     setModel("");
     onRegister(name, model);
-  };
-
-  const onClickChangeVariant = () => {
-    if (variant === "primary") {
-      setVariant("destructive");
-    } else {
-      setVariant("primary");
-    }
   };
 
   return (
@@ -56,14 +39,7 @@ function DeviceRegistrationForm({
         />
       </div>
       <div className="device-registration-button-area">
-        {/* CSSのパスをよしなに出来てなくてだめだ～ */}
-        <CSSModulesButton onClick={onClickRegistrationButton} variant={variant}>
-          hoge
-        </CSSModulesButton>
-        <VanillaButton onClick={onClickRegistrationButton} variant={variant}>
-          Register
-        </VanillaButton>
-        <button onClick={onClickChangeVariant}>ChangeColor</button>
+        <button onClick={onClickRegistrationButton}>Register</button>
       </div>
     </div>
   );

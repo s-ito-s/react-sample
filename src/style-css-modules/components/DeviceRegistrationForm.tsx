@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./DeviceRegistrationForm.css";
+import { Button } from "component-library-module";
 
 function DeviceRegistrationForm({
   onRegister,
@@ -39,7 +40,7 @@ function DeviceRegistrationForm({
         />
       </div>
       <div className="device-registration-button-area">
-        <button onClick={onClickRegistrationButton}>Register</button>
+        <Button onClick={onClickRegistrationButton}>Register</Button>
       </div>
     </div>
   );

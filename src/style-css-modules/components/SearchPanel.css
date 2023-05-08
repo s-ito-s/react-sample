@@ -1,0 +1,29 @@
+.search-panel-main {
+  border: 1px solid var(--color-grayscale-500);
+  padding: 5px;
+}
+
+.search-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-panel-header-label {
+  font-weight: bold;
+}
+
+.search-panel-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 0 0 0;
+}
+
+.search-panel-row-label {
+  width: 80px;
+}
+
+.search-panel-row-input {
+  width: 240px;
+}

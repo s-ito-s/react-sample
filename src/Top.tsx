@@ -23,9 +23,6 @@ function Top() {
         <Link to={`/recoil`}>recoil</Link>
       </div>
       <div>
-        <Link to={`/component-library`}>component library</Link>
-      </div>
-      <div>
         <br />
         <h2>メモ化用サンプル</h2>
         <br />
@@ -37,8 +34,14 @@ function Top() {
       <div>
         <Link to={`/counterClass`}>counter class</Link>
       </div>
+      <div>
+        <br />
+        <h2>Styling Research</h2>
+        <br />
+        <Link to={`/styleCssModules`}>CSS Modules</Link>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Top

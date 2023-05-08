@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState } from "react";
 import "./DeviceListItem.css";
+import { Button } from "component-library-module";
 
 type DeviceListItemProps = {
   id: string;
@@ -45,8 +46,10 @@ function DeviceListItem({
         <td>{model}</td>
         <td>
           <div className="device-list-item-button-area">
-            <button onClick={onClickEditButton}>Edit</button>
-            <button onClick={onClickDeleteButton}>Delete</button>
+            <Button onClick={onClickEditButton}>Edit</Button>
+            <Button onClick={onClickDeleteButton} variant="destructive">
+              Delete
+            </Button>
           </div>
         </td>
       </tr>
@@ -65,7 +68,7 @@ function DeviceListItem({
       <tr key={id}>
         <td>
           <input
-            className='device-list-item-input'
+            className="device-list-item-input"
             value={newName}
             onChange={(e) => {
               setNewName(e.target.value);
@@ -74,7 +77,7 @@ function DeviceListItem({
         </td>
         <td>
           <input
-            className='device-list-item-input'
+            className="device-list-item-input"
             value={newModel}
             onChange={(e) => {
               setNewModel(e.target.value);
@@ -82,21 +85,22 @@ function DeviceListItem({
           />
         </td>
         <td>
-          <div className='device-list-item-button-area'>
-            <button
+          <div className="device-list-item-button-area">
+            <Button
               onClick={() => {
                 setEditMode(false);
               }}
+              variant="secondary"
             >
               cancel
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => {
                 onClickUpdateButton(newName, newModel);
               }}
             >
               update
-            </button>
+            </Button>
           </div>
         </td>
       </tr>
