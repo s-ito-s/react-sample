@@ -18,6 +18,8 @@ import UserPageFunctionPanel from './UserPageFunctionPanel/UserPageFunctionPanel
 import UserList from './UserList/UserList'
 
 function UserPage () {
+  // console.log('render => UserPage')
+
   const userPageState = useSelector((s:RootState) => s.userPage)
   const dispatch = useDispatch()
 
@@ -28,7 +30,7 @@ function UserPage () {
     })()
   },[])
 
-  return (
+  return  (
     <div>     
       <UserSearchPanel />
       <UserPageFunctionPanel />

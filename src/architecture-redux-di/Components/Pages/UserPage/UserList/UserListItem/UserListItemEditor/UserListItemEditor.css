@@ -3,3 +3,25 @@
   justify-content: space-between;
   padding: 0 20px 0 0;
 }
+
+.user-list-item-name-input {
+  width: calc(100% - 20px);
+  padding: 2px 5px;
+  border: 1px solid #777;
+  border-radius: 4px;
+}
+
+.user-list-item-department-input {
+  width: calc(100% - 20px);
+  padding: 2px 5px;
+  border: 1px solid #777;
+  border-radius: 4px;
+}
+
+.user-list-item-department-input:hover {
+  cursor: pointer;
+}
+
+.user-list-item-button-area {
+  text-align: right;
+}

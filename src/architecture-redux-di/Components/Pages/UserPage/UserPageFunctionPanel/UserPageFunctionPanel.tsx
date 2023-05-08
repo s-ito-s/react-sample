@@ -6,6 +6,8 @@ import UserPagePagination from "./UserPagePagination/UserPagePagination"
 import './UserPageFunctionPanel.css'
 
 function UserPageFunctionPanel () {
+  // console.log('render => UserPageFunctionPanel')
+
   return (
     <div className="user-page-function-panel">
       <div>

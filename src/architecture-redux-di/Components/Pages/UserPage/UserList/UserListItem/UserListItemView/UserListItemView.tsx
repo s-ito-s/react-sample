@@ -1,4 +1,6 @@
 
+import './UserListItemView.css'
+
 type UserListItemViewProps = {
   id: string, 
   name: string,
@@ -9,6 +11,7 @@ type UserListItemViewProps = {
 }
 
 const UserListItemView = ( {id, name, department, checked, onCheck, onEdit}: UserListItemViewProps) => {
+  // console.log('render => UserListItemView')
 
   const onClickCheckBox = () => {
     onCheck(id)

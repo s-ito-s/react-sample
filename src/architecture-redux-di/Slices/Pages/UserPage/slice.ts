@@ -20,9 +20,21 @@ export const userPageSlice = createSlice({
         }
       }
     },
+
+    updateState2: (state, action: PayloadAction<{state:UserPageState, changedProperties: string[]}>) => {
+      console.log('updateState2')
+      const newState = action.payload.state
+      const changedProperties = action.payload.changedProperties
+      for (const property of changedProperties){
+        if (property in state && property in newState) {
+          /* @ts-ignore */
+          state[property] = newState[property]
+        }
+      }
+    },    
   },
 })
 
-export const { updateState } = userPageSlice.actions
+export const { updateState, updateState2 } = userPageSlice.actions
 
 export default userPageSlice.reducer

@@ -5,6 +5,7 @@ export interface IDepartmentService {
     params: {
       offset: number
       count: number
+      searchWord?: string
     }
   ) => any
 }
@@ -14,6 +15,7 @@ export class DepartmentService implements IDepartmentService {
     params: {
       offset: number
       count: number
+      searchWord?: string
     }
   ){
     const res = await fetchDepartments(params)

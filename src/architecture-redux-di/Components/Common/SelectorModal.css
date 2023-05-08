@@ -13,7 +13,19 @@
 }
 
 .selector-modal-text{
-  padding: 10px;
+  padding: 10px 10px 5px 10px;
+}
+
+.selector-modal-search {
+  width: 100%;  
+  margin: 0 10px 10px 10px;
+}
+
+.selector-modal-search-input {
+  width: calc(100% - 20px);
+  padding: 5px 8px;
+  border: 1px solid #777;
+  border-radius: 4px;
 }
 
 .selector-modal-list{
@@ -36,7 +48,7 @@
 .selector-modal-pagination{
   display: flex;
   justify-content: center;
-  margin: 0 10px 20px 10px;
+  margin: 0 10px 10px 10px;
   padding: 5px;
 }
 
@@ -45,8 +57,10 @@
   padding: 2px 5px;
 }
 
-.selector-modal-list-item:hover{
+.selector-modal-list-item-not-selected:hover{
   cursor: pointer;
+  background-color: #99f;  
+  color:white;
 }
 
 .selector-modal-list-item-selected{

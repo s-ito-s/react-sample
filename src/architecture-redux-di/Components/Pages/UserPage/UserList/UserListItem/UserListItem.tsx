@@ -8,6 +8,7 @@ import {
   showLoading,
   hideLoading,
   showMessage,
+  showPopupMessage,
 } from 'architecture-redux-di/Slices/App/slice'
 
 // User Page Store
@@ -33,6 +34,8 @@ type UserListItemProps = {
 }
 
 function UserListItem( {id, name, departmentId, department, checked}: UserListItemProps ) {
+  // console.log('render => UserListItem')
+
   const userPageState = useSelector((s:RootState) => s.userPage)
   const dispatch = useDispatch()
 
@@ -58,13 +61,12 @@ function UserListItem( {id, name, departmentId, department, checked}: UserListIt
 
       // 更新処理
       const newState = await updateUser(userPageState, userService, {id, name, departmentId})
-      dispatch(updateState(newState))    
+      dispatch(updateState(newState))
       setIsEdit(false)
       
       // 完了メッセージ
-      dispatch(showMessage({
-        title: 'User Page',
-        message: 'User updated',
+      dispatch(showPopupMessage({
+        text: 'User updated',
       }))
     } catch(error: any){
       // エラーメッセージ

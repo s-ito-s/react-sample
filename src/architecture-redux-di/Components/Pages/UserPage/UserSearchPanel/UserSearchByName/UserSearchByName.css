@@ -1,0 +1,13 @@
+.user-search-by-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  padding: 2px 5px; 
+}
+
+.user-search-name-input {
+  height: 34px;
+  margin: 0 5px 0 5px;
+  width: 160px;
+  border-radius: 4px;  
+}

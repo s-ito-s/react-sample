@@ -1,11 +1,15 @@
+// React
 import { useState, useEffect } from 'react';
 
+// Component
 import ModalBase from './ModalBase';
 import Pagination from 'architecture-redux-di/Components/Common/Pagination'
 
-import loadingIcon from "architecture-redux-di/Assets/loading.gif"
-
+// Css
 import './SelectorModal.css'
+
+// Asset
+import loadingIcon from "architecture-redux-di/Assets/loading.gif"
 
 type SelectorModalProps = { 
   title: string
@@ -20,8 +24,10 @@ type SelectorModalProps = {
     list: { value: string; label: string }[]
   }>
   onCancel: () => void
-  onExecute: (value:string, label:string) => void
+  onSelect: (value:string, label:string) => void
 };
+
+let timerId : any = null
 
 function SelectorModal ( {
   title, 
@@ -31,7 +37,7 @@ function SelectorModal ( {
   clearButton,
   fetchFunction,
   onCancel, 
-  onExecute
+  onSelect
 }: SelectorModalProps) {
   const [isLoading, setLoading] = useState(false)
   const [offset, setOffset] = useState(0)
@@ -46,6 +52,43 @@ function SelectorModal ( {
     })()
   },[])
 
+  const onInputSearchWord = (e:any) => {
+    const _searchWord = e.target.value
+    setSearchWord(_searchWord)
+
+    if (timerId) {
+      clearTimeout(timerId)
+    }else{
+      setLoading(true)
+    }
+
+    timerId = setTimeout( async () => {
+      await fetch(offset, count, _searchWord)
+      setLoading(false)
+      timerId = null
+    }, 500)
+  }
+
+  const onChangePage = (_offset: number) => {
+    setOffset(_offset)
+    fetch(_offset, count, searchWord)
+  }
+
+  const onChangeValue = (value: string) => {
+    setValue(value)
+  }
+
+  const onClear = () => {
+    onSelect('', '')
+  }
+
+  const onClickSelectButton = () => {
+    const selectedItem = list.find(item => item.value === value)
+    if (selectedItem) {
+      onSelect(value, selectedItem.label)
+    }
+  }
+
   const fetch = async (_offset:number, _count:number, _searchWord:string) => {
     try {
       setLoading(true)
@@ -58,26 +101,6 @@ function SelectorModal ( {
     }
   }
 
-  const onChangePage = (_offset: number) => {
-    setOffset(_offset)
-    fetch(_offset, count, searchWord)
-  }
-
-  const onSelect = (value: string) => {
-    setValue(value)
-  }
-
-  const onClear = () => {
-    onExecute('', '')
-  }
-
-  const onChange = () => {
-    const selectedItem = list.find(item => item.value === value)
-    if (selectedItem) {
-      onExecute(value, selectedItem.label)
-    }
-  }
-
   return (
     <ModalBase>
       <div className='selector-modal-header'>
@@ -85,6 +108,13 @@ function SelectorModal ( {
       </div>
       <div className='selector-modal-text'>
         {text}
+      </div>
+      <div className='selector-modal-search'>
+        <input 
+          className='selector-modal-search-input' 
+          placeholder='search'
+          onInput={onInputSearchWord}
+        />
       </div>
       <div className='selector-modal-list'>
         { 
@@ -106,8 +136,8 @@ function SelectorModal ( {
                 return (
                   <div
                     key={item.value} 
-                    className='selector-modal-list-item' 
-                    onClick={() => {onSelect(item.value)}}
+                    className='selector-modal-list-item selector-modal-list-item-not-selected' 
+                    onClick={() => {onChangeValue(item.value)}}
                   >
                     {item.label}
                   </div>
@@ -130,10 +160,13 @@ function SelectorModal ( {
         <div className='selector-modal-footer-space'></div>
         { 
           clearButton ?
-          <button onClick={() => {onClear()}}>clear</button> : <></>
+          <>
+            <button onClick={() => {onClear()}}>clear</button> 
+            <div className='selector-modal-footer-space'></div>
+          </>
+          : <></>
         }
-        <div className='selector-modal-footer-space'></div>
-        <button onClick={onChange}>select</button>
+        <button onClick={onClickSelectButton}>select</button>
       </div>
     </ModalBase>
   )

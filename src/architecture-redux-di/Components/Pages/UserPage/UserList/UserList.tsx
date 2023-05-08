@@ -17,6 +17,8 @@ import loadingIcon from "architecture-redux-di/Assets/loading.gif"
 import './UserList.css'
 
 function UserList () {
+  // console.log('render => UserList')
+
   const dispatch = useDispatch()
   const userPageState = useSelector((s:RootState) => s.userPage)
 
@@ -28,39 +30,8 @@ function UserList () {
     dispatch(updateState(newState))
   }
 
-  const UserListBody = () => {
-    return (
-      <tbody>
-        {userList.map((user) => {
-          return (
-            <UserListItem 
-              key={user.id}
-              id={user.id}
-              name={user.name}
-              departmentId={user.departmentId}
-              department={user.department}
-              checked={user.checked}
-            />
-          )}
-        )}
-      </tbody>
-    )
-  }
-
-  const UserListLoading = () => {
-    return (
-      <tbody>
-        <tr>
-          <td colSpan={4} className="user-list-loading-cell"> 
-            <img src={loadingIcon} /> Loading 
-          </td>
-        </tr>
-      </tbody>
-    )
-  }
-
   return (
-    <table>
+    <table className="user-list-table">
       <thead>
         <tr>
           <th className="user-list-cell-check">
@@ -71,8 +42,30 @@ function UserList () {
           <th className="user-list-cell-button"></th>
         </tr>
       </thead>
-      { userPageState.isLoading ? UserListLoading() : UserListBody() }
-    </table>      
+      <tbody>{ 
+        userPageState.isLoading ? 
+        <tr>
+          <td colSpan={4} className="user-list-loading-cell"> 
+            <img src={loadingIcon} /> Loading 
+          </td>
+        </tr>
+        :
+        <>
+          {userList.map((user) => {
+            return (
+              <UserListItem 
+                key={user.id}
+                id={user.id}
+                name={user.name}
+                departmentId={user.departmentId}
+                department={user.department}
+                checked={user.checked}
+              />
+            )}
+          )}
+        </>
+      }</tbody> 
+    </table>
   )
 }
 

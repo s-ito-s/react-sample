@@ -184,19 +184,6 @@ for(let i = 0; 239 > i; ++i) {
   })
 }
 
-const departments = []
-const departmentNameList = ['営業', '人事', '開発', '総務', '経理', '法務', '情報システム']
-let i = 0
-for(const departmentName of departmentNameList) {
-  for(let j = 1; 5 >= j; ++j) {
-    departments.push({ 
-      id : String(i),
-      name: departmentName + '部 ' + j + '課',
-    })
-    ++i
-  }
-}
-
 app.post('/user', (req, res) => {
   console.log('post : /user', req.body, req.query, req.params)
   const param = req.body
@@ -261,10 +248,10 @@ app.put('/user/:userId', (req, res) => {
     return
   }
 
-  if (params?.name && idx > 0) {
+  if (params?.name) {
     users[idx].name = params.name
   }
-  if (params?.departmentId && idx > 0) {
+  if (params?.departmentId) {
     users[idx].departmentId = params.departmentId
   }
   const response = {
@@ -289,21 +276,34 @@ app.delete('/user/:userId', (req, res) => {
 // Department
 ////////////////////////////////////////////////////
 
+const departments = []
+const departmentNameList = ['営業', '人事', '開発', '総務', '経理', '法務', '情報システム']
+let i = 0
+for(const departmentName of departmentNameList) {
+  for(let j = 1; 5 >= j; ++j) {
+    departments.push({ 
+      id : String(i),
+      name: departmentName + '部 ' + j + '課',
+    })
+    ++i
+  }
+}
+
 app.get('/departments', (req, res) => {
   console.log('get : /departments', req.body, req.query, req.params)
   const params = req.query
-  const offset = params.offset
-  const count = params.count
+  const offset = Number(params.offset)
+  const count = Number(params.count)
 
   let list = departments
-  if (params?.department) {
-    list = list.filter((user) => {
-      return user.departmentId.match(params.department)
+  if (params?.searchWord) {
+    list = list.filter((department) => {
+      return department.name.match(params.searchWord)
     })
-  }  
-
+  }
   const total = list.length
-  list = departments.filter((_, idx) => {
+
+  list = list.filter((_, idx) => {
     return (offset <= idx) && (idx < offset + count)
   })
 

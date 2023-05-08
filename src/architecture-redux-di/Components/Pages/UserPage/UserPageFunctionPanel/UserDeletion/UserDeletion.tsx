@@ -29,6 +29,8 @@ import './UserDeletion.css'
 let cancelFlag = false
 
 function UserDeletion () {
+  // console.log('render => UserDeletion')
+
   const userPageState = useSelector((s:RootState) => s.userPage)
   const isDisable = isDeleteButtonDisable(userPageState)
   const isProcessing = userPageState.isProcessing
@@ -100,14 +102,14 @@ function UserDeletion () {
             }
             <span>{Math.floor(progressRate * 100)} %</span>
           </div>
-          <div className="user-deletion-modal-footer">
-            {
-              !cancelFlag ?            
+          {
+            !cancelFlag ?       
+            <div className="user-deletion-modal-footer">
               <button onClick={onCancel}>
                 cancel
-              </button>: <></>
-            }
-          </div>
+              </button>
+            </div>: <></>
+          }
         </ModalBase>
         : <></>
       }

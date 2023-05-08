@@ -22,6 +22,8 @@ type UserListItemEditorProps = {
 }
 
 function UserListItemEditor ({id, name, departmentId, department, checked, onCheck, onCancel, onUpdate}: UserListItemEditorProps) {
+  // console.log('render => UserListItemEditor')
+
   const [newName, setNewName] = useState(name)
   const [newDepartmentId, setNewDepartmentId] = useState(departmentId)
   const [newDepartment, setNewDepartment] = useState(department)
@@ -38,7 +40,7 @@ function UserListItemEditor ({id, name, departmentId, department, checked, onChe
   }  
 
   const fetchDepartments = async (offset: number, count: number, searchWord: string) => {
-    const res: any = await departmentService.fetchDepartments({offset, count})
+    const res: any = await departmentService.fetchDepartments({offset, count, searchWord})
     return {
       offset: offset,
       count: res.count,
@@ -60,20 +62,25 @@ function UserListItemEditor ({id, name, departmentId, department, checked, onChe
           checked={checked}
           onChange={() => {onCheck(id)}}
         />
-      </td>      
+      </td>
       <td>
         <input 
-          className="user-list-item-input"
+          className="user-list-item-name-input"
           value={newName}
           onChange={(e)=>{setNewName(e.target.value)}}
         />
       </td>
       <td>
         <div className="user-list-item-data-cell">
-          <span>{newDepartment}</span>
-          <button onClick={() => {openDepartmentSelector(true)}}>select</button>
+          <span
+            className="user-list-item-department-input"
+            onClick={() => {openDepartmentSelector(true)}}
+          >
+            {newDepartment}
+          </span>
         </div>
-        { isDepartmentSelectorOpen ? 
+        { 
+          isDepartmentSelectorOpen ? 
           <SelectorModal
             title='Department'
             text='Select department'
@@ -81,7 +88,7 @@ function UserListItemEditor ({id, name, departmentId, department, checked, onChe
             fetchFunction={fetchDepartments}
             count={10}
             onCancel={() => openDepartmentSelector(false)}
-            onExecute={onChangeDepartment}
+            onSelect={onChangeDepartment}
           /> : <></>
         }        
       </td>

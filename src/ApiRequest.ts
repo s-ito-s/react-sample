@@ -60,6 +60,7 @@ export async function fetchDepartments(
   params: {
     offset: number
     count: number
+    searchWord?: string
   }
 ) {
   return await axios.get('/departments', { params })  

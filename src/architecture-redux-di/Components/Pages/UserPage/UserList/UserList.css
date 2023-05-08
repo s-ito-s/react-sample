@@ -1,3 +1,7 @@
+.user-list-table {
+  max-width: 700px;
+}
+
 .user-list-cell-check {
   width: 50px;
 }

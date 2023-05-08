@@ -1,0 +1,55 @@
+.user-registration-modal-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 100%;
+  padding: 10px;
+
+  font-size: large;
+
+  border: 1px solid #777;
+  border-style: none none solid none;
+}
+
+.user-registration-modal-main{
+  width: 340px;
+  padding: 5px 10px;
+}
+
+.user-registration-modal-input{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.user-registration-modal-input-label{
+  width: 120px;
+}
+
+.user-registration-modal-name-input{
+  width: calc(100% - 120px);
+  border: 1px solid #777;
+  border-radius: 4px;
+}
+
+.user-registration-modal-department-input{
+  width: calc(100% - 120px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-registration-modal-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  padding: 10px;
+
+  border: 1px solid #777;
+  border-style: solid none none none;
+}
+

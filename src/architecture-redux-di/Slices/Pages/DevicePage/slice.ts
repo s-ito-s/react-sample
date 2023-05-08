@@ -20,9 +20,20 @@ export const devicePageSlice = createSlice({
         }
       }
     },
+
+    updateState2: (state, action: PayloadAction<{state:DevicePageState, changedProperties: string[]}>) => {
+      const newState = action.payload.state
+      const changedProperties = action.payload.changedProperties
+      for (const property of changedProperties){
+        if (property in state && property in newState) {
+          /* @ts-ignore */
+          state[property] = newState[property]
+        }
+      }
+    },       
   },
 })
 
-export const { updateState } = devicePageSlice.actions
+export const { updateState, updateState2 } = devicePageSlice.actions
 
 export default devicePageSlice.reducer

@@ -1,5 +1,4 @@
 // React
-import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 // Redux
@@ -19,6 +18,8 @@ import Pagination from 'architecture-redux-di/Components/Common/Pagination'
 import './UserPagePagination.css'
 
 function UserPagePagination () {
+  // console.log('render => UserPagePagination')
+
   const userPageState = useSelector((s:RootState) => s.userPage)
   const dispatch = useDispatch()
 
