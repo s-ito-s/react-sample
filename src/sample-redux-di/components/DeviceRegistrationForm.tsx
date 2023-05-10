@@ -8,7 +8,7 @@ import { selectDevicePageState } from '../store/selectors'
 import { updateState } from '../store/devicePageSlice'
 
 // Service
-import deviceService from "../service/deviceService"
+import deviceService from "../Service/deviceService"
 
 // Component
 import './DeviceRegistrationForm.css'
