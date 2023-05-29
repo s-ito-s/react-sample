@@ -3226,7 +3226,7 @@ commondir@^1.0.1:
   resolved "https://registry.npmjs.org/commondir/-/commondir-1.0.1.tgz"
   integrity sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==
 
-"component-library-module@git+ssh://git@github.com:KazukiMatsuda1/component-library-module.git#css-modules":
+"component-library-module@git+ssh://git@github.com:KazukiMatsuda1/component-library-module.git#build-and-bundle":
   version "1.0.0"
   resolved "git+ssh://git@github.com/KazukiMatsuda1/component-library-module.git#6aa8290900e807d410c08e5e141ae6cb2700ea3e"
 
